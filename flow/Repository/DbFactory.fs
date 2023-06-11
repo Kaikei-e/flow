@@ -1,6 +1,6 @@
-namespace Flow
+namespace Flow.Repository.DbFactory
 
-module DbFactory = 
+module Connection = 
 
     open System.Data
     open MySql.Data.MySqlClient

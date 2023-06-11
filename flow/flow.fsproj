@@ -5,7 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Flow.fs" />
+        <Compile Include="Program.fs" />
         <Folder Include="Domain\" />
         <Folder Include="Repository\" />
         <Folder Include="Usecase\" />
