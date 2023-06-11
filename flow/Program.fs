@@ -1,14 +1,17 @@
 namespace Flow
 
-open System
-open Microsoft.AspNetCore.Builder
-open Microsoft.AspNetCore.Http
-open Microsoft.Extensions.Hosting
-open Flow.Repository.DbFactory
+module Main =
+    open Microsoft.AspNetCore.Builder
+    open Microsoft.AspNetCore.Http
+    open Microsoft.Extensions.Hosting
+    open System
 
-module Flow =
+
+
     [<EntryPoint>]
     let main args =
+            use db = 
+            
             let builder = WebApplication.CreateBuilder(args)
             let app = builder.Build()
 
