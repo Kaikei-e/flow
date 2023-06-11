@@ -1,14 +1,13 @@
-namespace Program
+namespace Flow
 
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.Hosting
-open DbFactory
 
 module main =
     [<EntryPoint>]
     let main args =
-        use db = DbFactory.Initializer()
+        
                 
         let builder = WebApplication.CreateBuilder(args)
         let app = builder.Build()
