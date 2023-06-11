@@ -1,13 +1,19 @@
-module flow.Repository.DbFactory
+module DbFactory
 
-open Dapper.FSharp.MySQL
 open System.Data
 open MySql.Data.MySqlClient
 
-Dapper.FSharp.MySQL.OptionTypes.register()
+type public Initializer() =
+    static member Open() =
+        let connectionString = "Server=localhost;Database=flow;Uid=root;Pwd=;"
+        let db: IDbConnection = new MySqlConnection(connectionString)
+        db.Open()
+        db
 
-let connectionString = "Server=localhost;Database=flow;Uid=root;Pwd=;"
-let db: IDbConnection = new MySqlConnection(connectionString)
 
-
-
+// module Creation =
+//     type Start =
+//         static member Open() =
+//             let connectionString = "Server=localhost;Database=flow;Uid=root;Pwd=;"
+//             let db: IDbConnection = new MySqlConnection(connectionString)
+//             db

@@ -1,15 +1,28 @@
-open System
+namespace Program
+
 open Microsoft.AspNetCore.Builder
+open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.Hosting
+open DbFactory
 
-[<EntryPoint>]
-let main args =
-    let builder = WebApplication.CreateBuilder(args)
-    let app = builder.Build()
+module main =
+    [<EntryPoint>]
+    let main args =
+        use db = DbFactory.Initializer()
+                
+        let builder = WebApplication.CreateBuilder(args)
+        let app = builder.Build()
 
-    app.MapGet("/", Func<string>(fun () -> "Hello World!")) |> ignore
-
-    app.Run()
-
-    0 // Exit code
-
+        app.UseRouting() |> ignore
+        app.UseEndpoints(fun endpoints ->
+            endpoints.MapGet(
+                "/system/health",
+                fun (context: HttpContext) ->
+                    context.Response.StatusCode <- 200
+                    context.Response.WriteAsync("OK")
+                ) |> ignore
+            ) |> ignore
+        
+        app.Run()
+        
+        0 // return an integer exit code

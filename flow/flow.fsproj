@@ -7,10 +7,15 @@
     <ItemGroup>
         <Compile Include="Program.fs" />
         <Folder Include="Domain\" />
-        <Compile Include="Repository\DbFactory.fs" />
+        <Folder Include="Repository\" />
         <Folder Include="Usecase\" />
         <Folder Include="Gateway\" />
         <Folder Include="Port\" />
+        <Compile Include="Domain\*.fs" />
+        <Compile Include="Repository\*.fs" />
+        <Compile Include="Usecase\*.fs" />
+        <Compile Include="Gateway\*.fs" />
+        <Compile Include="Port\*.fs" />
     </ItemGroup>
 
     <ItemGroup>
